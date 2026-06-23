@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Remote System Discovery: Broadcast Discovery | Dataset TTP Overview</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">TTP</span>
+      <span>
+        <strong>Dataset Mapping</strong>
+        <small>MITRE ATT&CK overview</small>
+      </span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="../index.html">Matrix</a>
+    </nav>
+  </header>
+  <main class="detail-main">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <a href="../index.html">Matrix</a>
+      <span>Remote System Discovery: Broadcast Discovery</span>
+    </nav>
+    <article class="detail-hero">
+      <p class="eyebrow">Technique</p>
+      <h1>Remote System Discovery: Broadcast Discovery</h1>
+      <div class="chip-row" aria-label="Associated tactics">
+        <a class="chip" href="../tactics/discovery.html">Discovery</a>
+      </div>
+      <section class="description">
+        <h2>Description</h2>
+        <p>Adversaries may perform broadcast discovery requests to enumerate systems and devices on a network. Broadcast discovery works by one system or device sending messages to all systems and devices on a network (or subnet) and then waiting for a response. If a response is received that means the system or device that responded is live and can communicate over that protocol. Adversaries may leverage different protocols supported on the network for sending broadcast messages. Some common OT protocols that have broadcast discovery mechanisms are Building Automation and Control Network (BACNet) Who-Is requests, Common Industrial Protocol (CIP) List Identity User Datagram Protocol (UDP) broadcast requests, and Siemens S7 broadcast identification requests.</p>
+      </section>
+    </article>
+  </main>
+</body>
+</html>

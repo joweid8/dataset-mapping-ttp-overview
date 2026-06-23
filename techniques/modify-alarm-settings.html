@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modify Alarm Settings | Dataset TTP Overview</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">TTP</span>
+      <span>
+        <strong>Dataset Mapping</strong>
+        <small>MITRE ATT&CK overview</small>
+      </span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="../index.html">Matrix</a>
+    </nav>
+  </header>
+  <main class="detail-main">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <a href="../index.html">Matrix</a>
+      <span>Modify Alarm Settings</span>
+    </nav>
+    <article class="detail-hero">
+      <p class="eyebrow">Technique</p>
+      <h1>Modify Alarm Settings</h1>
+      <div class="chip-row" aria-label="Associated tactics">
+        <a class="chip" href="../tactics/inhibit-response-function.html">Inhibit Response Function</a>
+      </div>
+      <section class="description">
+        <h2>Description</h2>
+        <p>Adversaries may modify alarm settings to prevent alerts that may inform operators of their presence or to prevent responses to dangerous and unintended scenarios. Reporting messages are a standard part of data acquisition in control systems. Reporting messages are used as a way to transmit system state information and acknowledgements that specific actions have occurred. These messages provide vital information for the management of a physical process, and keep operators, engineers, and administrators aware of the state of system devices and physical processes. If an adversary is able to change the reporting settings, certain events could be prevented from being reported. This type of modification can also prevent operators or devices from performing actions to keep the system in a safe state. If critical reporting messages cannot trigger these actions then a Impact (TA0105) could occur. In ICS environments, the adversary may have to use Alarm Suppression (T0878) or contend with multiple alarms and/or alarm propagation to achieve a specific goal to evade detection or prevent intended responses from occurring. Methods of suppression often rely on modification of alarm settings, such as modifying in memory code to fixed values or tampering with assembly level instruction code.</p>
+      </section>
+    </article>
+  </main>
+</body>
+</html>

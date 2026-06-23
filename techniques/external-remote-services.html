@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>External Remote Services | Dataset TTP Overview</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">TTP</span>
+      <span>
+        <strong>Dataset Mapping</strong>
+        <small>MITRE ATT&CK overview</small>
+      </span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="../index.html">Matrix</a>
+    </nav>
+  </header>
+  <main class="detail-main">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <a href="../index.html">Matrix</a>
+      <span>External Remote Services</span>
+    </nav>
+    <article class="detail-hero">
+      <p class="eyebrow">Technique</p>
+      <h1>External Remote Services</h1>
+      <div class="chip-row" aria-label="Associated tactics">
+        <a class="chip" href="../tactics/initial-access.html">Initial Access</a>
+      </div>
+      <section class="description">
+        <h2>Description</h2>
+        <p>Adversaries may leverage external remote services as a point of initial access into your network. These services allow users to connect to internal network resources from external locations. Examples are VPNs, Citrix, and other access mechanisms. Remote service gateways often manage connections and credential authentication for these services. External remote services allow administration of a control system from outside the system. Often, vendors and internal engineering groups have access to external remote services to control system networks via the corporate network. In some cases, this access is enabled directly from the internet. While remote access enables ease of maintenance when a control system is in a remote area, compromise of remote access solutions is a liability. The adversary may use these services to gain access to and execute attacks against a control system network. Access to valid accounts is often a requirement. As they look for an entry point into the control system network, adversaries may begin searching for existing point-to-point VPN implementations at trusted third party networks or through remote support employee connections where split tunneling is enabled.</p>
+      </section>
+    </article>
+  </main>
+</body>
+</html>

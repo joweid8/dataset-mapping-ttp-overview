@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Denial of Service | Dataset TTP Overview</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">TTP</span>
+      <span>
+        <strong>Dataset Mapping</strong>
+        <small>MITRE ATT&CK overview</small>
+      </span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="../index.html">Matrix</a>
+    </nav>
+  </header>
+  <main class="detail-main">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <a href="../index.html">Matrix</a>
+      <span>Denial of Service</span>
+    </nav>
+    <article class="detail-hero">
+      <p class="eyebrow">Technique</p>
+      <h1>Denial of Service</h1>
+      <div class="chip-row" aria-label="Associated tactics">
+        <a class="chip" href="../tactics/inhibit-response-function.html">Inhibit Response Function</a>
+      </div>
+      <section class="description">
+        <h2>Description</h2>
+        <p>Adversaries may perform Denial-of-Service (DoS) attacks to disrupt expected device functionality. Examples of DoS attacks include overwhelming the target device with a high volume of requests in a short time period and sending the target device a request it does not know how to handle. Disrupting device state may temporarily render it unresponsive, possibly lasting until a reboot can occur. When placed in this state, devices may be unable to send and receive requests, and may not perform expected response functions in reaction to other events in the environment. Some ICS devices are particularly sensitive to DoS events, and may become unresponsive in reaction to even a simple ping sweep. Adversaries may also attempt to execute a Permanent Denial-of-Service (PDoS) against certain devices, such as in the case of the BrickerBot malware. Adversaries may exploit a software vulnerability to cause a denial of service by taking advantage of a programming error in a program, service, or within the operating system software or kernel itself to execute adversary-controlled code. Vulnerabilities may exist in software that can be used to cause a denial of service condition. Adversaries may have prior knowledge about industrial protocols or control devices used in the environment through Remote System Information Discovery (T0888). There are examples of adversaries remotely causing a Device Restart/Shutdown (T0816) by exploiting a vulnerability that induces uncontrolled resource consumption.</p>
+      </section>
+    </article>
+  </main>
+</body>
+</html>

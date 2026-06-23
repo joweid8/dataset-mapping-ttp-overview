@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unauthorized Message | Dataset TTP Overview</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">TTP</span>
+      <span>
+        <strong>Dataset Mapping</strong>
+        <small>MITRE ATT&CK overview</small>
+      </span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="../index.html">Matrix</a>
+    </nav>
+  </header>
+  <main class="detail-main">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <a href="../index.html">Matrix</a>
+      <span>Unauthorized Message</span>
+    </nav>
+    <article class="detail-hero">
+      <p class="eyebrow">Technique</p>
+      <h1>Unauthorized Message</h1>
+      <div class="chip-row" aria-label="Associated tactics">
+        <a class="chip" href="../tactics/evasion.html">Evasion</a><a class="chip" href="../tactics/impair-process-control.html">Impair Process Control</a>
+      </div>
+      <section class="description">
+        <h2>Description</h2>
+        <p>Adversaries may send unauthorized messages to ICS systems and devices to evade defenses or manipulate processes. Unauthorized messages can be categorized as either reporting messages that contain telemetry data about the current state of systems, devices, and processes or as command messages which instruct systems and devices on how to operate. By injecting unauthorized messages, adversaries can make it appear as if everything is working correctly when it isn’t, trigger alarms to misdirect personnel or impact processes, and manipulate controls to disrupt processes. Adversaries may send unauthorized messages in an ICS environment using software found within the environment (living-off-the-land, vendor-specific interfaces, etc.), custom tooling leveraging OT protocols and libraries, or by positioning themselves between systems and devices and injecting messages into the communications such as the case with an Adversary-in-the-Middle attack.</p>
+      </section>
+    </article>
+  </main>
+</body>
+</html>
