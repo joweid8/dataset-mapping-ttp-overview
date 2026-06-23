@@ -24,6 +24,57 @@ TACTIC_ORDER = [
     "Impact",
 ]
 
+TACTIC_DETAILS = {
+    "Initial Access": {
+        "id": "TA0108",
+        "description": "The adversary is trying to get into your ICS environment.",
+    },
+    "Execution": {
+        "id": "TA0104",
+        "description": "The adversary is trying to run code or manipulate system functions, parameters, and data in an unauthorized way.",
+    },
+    "Persistence": {
+        "id": "TA0110",
+        "description": "The adversary is trying to maintain their foothold in your ICS environment.",
+    },
+    "Privilege Escalation": {
+        "id": "TA0111",
+        "description": "The adversary is trying to gain higher-level permissions.",
+    },
+    "Evasion": {
+        "id": "TA0103",
+        "description": "The adversary is trying to avoid security defenses.",
+    },
+    "Discovery": {
+        "id": "TA0102",
+        "description": "The adversary is locating information to assess and identify their targets in your environment.",
+    },
+    "Lateral Movement": {
+        "id": "TA0109",
+        "description": "The adversary is trying to move through your ICS environment.",
+    },
+    "Collection": {
+        "id": "TA0100",
+        "description": "The adversary is trying to gather data of interest and domain knowledge on your ICS environment to inform their goal.",
+    },
+    "Command and Control": {
+        "id": "TA0101",
+        "description": "The adversary is trying to communicate with and control compromised systems, controllers, and platforms with access to your ICS environment.",
+    },
+    "Inhibit Response Function": {
+        "id": "TA0107",
+        "description": "The adversary is trying to prevent your safety, protection, quality assurance, and operator intervention functions from responding to a failure, hazard, or unsafe state.",
+    },
+    "Impair Process Control": {
+        "id": "TA0106",
+        "description": "The adversary is trying to manipulate, disable, or damage physical control processes.",
+    },
+    "Impact": {
+        "id": "TA0105",
+        "description": "The adversary is trying to manipulate, interrupt, or destroy your ICS systems, data, and their surrounding environment.",
+    },
+}
+
 
 def slugify(value: str) -> str:
     slug = value.lower().replace("&", " and ")
@@ -79,24 +130,18 @@ def sort_techniques(names: list[str]) -> list[str]:
 
 def build_index(techniques: dict[str, dict], tactics: list[str], by_tactic: dict[str, list[str]]) -> str:
     columns = []
-    for idx, tactic in enumerate(tactics):
+    for tactic in tactics:
         cards = []
         for technique in sort_techniques(by_tactic[tactic]):
-            item = techniques[technique]
             is_subtechnique = ":" in technique
             card_class = "technique-card subtechnique" if is_subtechnique else "technique-card"
-            other_tactics = [t for t in item["tactics"] if t != tactic]
-            badges = "".join(
-                f'<span class="mini-badge">{escape(other)}</span>' for other in other_tactics
-            )
             cards.append(
                 f"""        <a class="{card_class}" href="{technique_link(technique)}">
           <span class="technique-name">{escape(technique)}</span>
-          {f'<span class="related-tactics">{badges}</span>' if badges else ''}
         </a>"""
             )
         columns.append(
-            f"""      <section class="matrix-column" style="--accent-index: {idx}">
+            f"""      <section class="matrix-column">
         <a class="tactic-heading" href="{tactic_link(tactic)}">
           <span>{escape(tactic)}</span>
           <strong>{len(by_tactic[tactic])}</strong>
@@ -119,6 +164,65 @@ def build_index(techniques: dict[str, dict], tactics: list[str], by_tactic: dict
       </dl>
     </section>
 
+    <section class="task-definition" aria-labelledby="task-definition-title">
+      <div class="task-main">
+        <p class="eyebrow">Experiment Task</p>
+        <h2 id="task-definition-title">Task Definition</h2>
+        <p>You will be given attack descriptions for which your task is to identify which MITRE ATT&CK for ICS techniques best describe the given attack scenario.</p>
+      </div>
+
+      <div class="task-grid">
+        <section>
+          <h3>Input Material</h3>
+          <ul>
+            <li>An attack description</li>
+            <li>Dataset context, explaining what type of data is available, such as sensor and actuator values, network traffic, protocol fields, or similar evidence.</li>
+            <li>MITRE ATT&CK for ICS technique descriptions</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Task</h3>
+          <p>For a given attack, identify all MITRE ATT&CK for ICS techniques that are directly supported by the attack description and the available dataset evidence.</p>
+          <p>A technique should only be selected if its defining behavior could actually be observed in the available dataset fields.</p>
+        </section>
+      </div>
+
+      <section class="mapping-rules" aria-label="Mapping rules">
+        <h3>Mapping Rules</h3>
+        <ol>
+          <li>
+            <strong>Decompose the attack</strong>
+            <ul>
+              <li>What is the goal of the attack?</li>
+              <li>What asset or process is affected?</li>
+              <li>What steps did the attacker perform?</li>
+              <li>What action or outcome is stated and visible?</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Consider the data contained in the dataset</strong>
+            <p>Think about how the attack manifests in the data and what is visible.</p>
+            <p>Example: if the dataset only contains process states, such as sensor and actuator values, you cannot see the network traffic itself, including command messages or malicious packets.</p>
+            <p>Example: if the dataset contains only network traffic without any state, you cannot evidence tank levels, pump states, temperature, or similar process values unless they are explicitly contained within the packets.</p>
+          </li>
+          <li>
+            <strong>Use the most specific technique supported</strong>
+            <p>Always consider the most specific technique. If there is a sub-technique that fits better than its parent, assign it.</p>
+            <p>Example: if the attacker sends an unauthorized message with false sensor values to the HMI, assign "Unauthorized Message: Reporting Message", not "Unauthorized Message".</p>
+          </li>
+          <li>
+            <strong>Common mistakes</strong>
+            <ul>
+              <li><strong>Overmapping:</strong> Do not select techniques for broader attack stages or goals that are not stated or observable.</li>
+              <li><strong>Leaping to conclusions:</strong> Do not assign a technique just because it sounds plausible. The behavior must be supported by the attack description and must leave a trace in the available dataset.</li>
+            </ul>
+            <p>Example: if the attacker turns on a motorized valve, "Modify Parameter" could likely have happened, but if it is not explicitly stated by the description, this would only be an inference without proof.</p>
+          </li>
+        </ol>
+      </section>
+    </section>
+
     <section class="toolbar" aria-label="Matrix controls">
       <label class="search">
         <span>Search</span>
@@ -138,6 +242,8 @@ def build_index(techniques: dict[str, dict], tactics: list[str], by_tactic: dict
 
 
 def build_tactic_page(tactic: str, techniques: dict[str, dict], names: list[str]) -> str:
+    details = TACTIC_DETAILS.get(tactic, {})
+    tactic_description = details.get("description", "")
     cards = []
     for technique in sort_techniques(names):
         desc = techniques[technique].get("description", "")
@@ -157,7 +263,7 @@ def build_tactic_page(tactic: str, techniques: dict[str, dict], names: list[str]
     <section class="detail-hero tactic-hero">
       <p class="eyebrow">Tactic</p>
       <h1>{escape(tactic)}</h1>
-      <p class="lede">{len(names)} mapped techniques</p>
+      {f'<p class="tactic-description">{escape(tactic_description)}</p>' if tactic_description else ''}
     </section>
     <section class="detail-list" aria-label="Techniques for {escape(tactic)}">
 {chr(10).join(cards)}
@@ -210,14 +316,15 @@ def write_static_assets(output_dir: Path) -> None:
 
 :root {
   color-scheme: light;
-  --bg: #f4f6f7;
-  --panel: #ffffff;
-  --ink: #172026;
-  --muted: #62727d;
-  --line: #d9e0e4;
-  --accent: #1f7a8c;
-  --accent-soft: #e4f4f6;
-  --shadow: 0 18px 45px rgba(27, 42, 51, 0.08);
+  --bg: #f3efe7;
+  --panel: #fffdf8;
+  --panel-soft: #faf6ee;
+  --ink: #24211d;
+  --muted: #746f66;
+  --line: #ddd4c6;
+  --accent: #405d4d;
+  --accent-soft: #e8efe8;
+  --shadow: 0 14px 32px rgba(54, 48, 39, 0.08);
 }
 
 body {
@@ -242,7 +349,7 @@ a {
   justify-content: space-between;
   gap: 24px;
   padding: 14px clamp(18px, 4vw, 44px);
-  background: rgba(244, 246, 247, 0.9);
+  background: rgba(243, 239, 231, 0.92);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(14px);
 }
@@ -259,7 +366,7 @@ a {
   width: 42px;
   height: 42px;
   border-radius: 8px;
-  background: #18343c;
+  background: var(--accent);
   color: #fff;
   font-weight: 800;
   font-size: 0.8rem;
@@ -356,6 +463,118 @@ h1 {
   font-size: 0.84rem;
 }
 
+.task-definition {
+  display: grid;
+  gap: 22px;
+  margin: 26px 0 24px;
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.task-definition h2,
+.task-definition h3,
+.task-definition p,
+.task-definition ul,
+.task-definition ol {
+  margin-top: 0;
+}
+
+.task-definition h2 {
+  margin-bottom: 10px;
+  font-size: clamp(1.45rem, 3vw, 2.1rem);
+  line-height: 1.1;
+}
+
+.task-definition h3 {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.task-definition p,
+.task-definition li {
+  color: #413c35;
+}
+
+.task-definition p {
+  max-width: 920px;
+  margin-bottom: 10px;
+}
+
+.task-definition ul,
+.task-definition ol {
+  padding-left: 1.2rem;
+}
+
+.task-definition li {
+  margin-bottom: 8px;
+}
+
+.task-main {
+  max-width: 980px;
+}
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.task-grid section,
+.mapping-rules {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-soft);
+}
+
+.mapping-rules > ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  counter-reset: rule-counter;
+}
+
+.mapping-rules > ol > li {
+  position: relative;
+  margin: 0;
+  padding: 14px 14px 14px 48px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  counter-increment: rule-counter;
+}
+
+.mapping-rules > ol > li::before {
+  content: counter(rule-counter);
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.mapping-rules > ol > li > strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.mapping-rules ul {
+  margin-bottom: 0;
+}
+
 .toolbar {
   display: flex;
   align-items: end;
@@ -391,7 +610,7 @@ button {
   padding: 9px 14px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #18343c;
+  background: var(--accent);
   color: #fff;
   font: inherit;
   font-weight: 750;
@@ -423,11 +642,11 @@ button {
   justify-content: space-between;
   gap: 12px;
   padding: 12px;
+  border: 1px solid #c9bca9;
   border-radius: 8px;
-  background: hsl(calc(188 + var(--accent-index) * 13) 44% 28%);
-  color: #fff;
+  background: #ded3c3;
+  color: var(--ink);
   font-weight: 850;
-  box-shadow: var(--shadow);
 }
 
 .tactic-heading strong {
@@ -436,7 +655,8 @@ button {
   min-width: 32px;
   height: 32px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 253, 248, 0.72);
+  border: 1px solid #c9bca9;
   font-size: 0.9rem;
 }
 
@@ -446,10 +666,9 @@ button {
   min-height: 70px;
   padding: 11px 12px;
   border: 1px solid var(--line);
-  border-left: 5px solid hsl(calc(188 + var(--accent-index) * 13) 44% 36%);
   border-radius: 8px;
   background: var(--panel);
-  box-shadow: 0 8px 22px rgba(27, 42, 51, 0.05);
+  box-shadow: 0 6px 16px rgba(54, 48, 39, 0.05);
 }
 
 .technique-card:hover,
@@ -462,27 +681,12 @@ button {
 
 .subtechnique {
   margin-left: 16px;
-  background: #fbfcfc;
+  background: var(--panel-soft);
 }
 
 .technique-name {
   font-weight: 750;
   line-height: 1.25;
-}
-
-.related-tactics {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.mini-badge {
-  padding: 2px 6px;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: #23535d;
-  font-size: 0.68rem;
-  font-weight: 750;
 }
 
 .breadcrumbs {
@@ -524,13 +728,21 @@ button {
 }
 
 .tactic-hero {
-  background: #18343c;
+  background: var(--accent);
   color: #fff;
 }
 
 .tactic-hero .lede,
 .tactic-hero .eyebrow {
-  color: #c8e4e8;
+  color: #e8efe8;
+}
+
+.tactic-description {
+  max-width: 780px;
+  margin: 18px 0 0;
+  color: #fffdf8;
+  font-size: 1.18rem;
+  line-height: 1.45;
 }
 
 .chip-row {
@@ -545,7 +757,7 @@ button {
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--accent-soft);
-  color: #23535d;
+  color: #2f4c3e;
   font-weight: 750;
 }
 
@@ -563,7 +775,7 @@ button {
 
 .description p {
   margin: 0;
-  color: #34444d;
+  color: #413c35;
   font-size: 1.05rem;
 }
 
@@ -582,7 +794,7 @@ button {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel);
-  box-shadow: 0 8px 22px rgba(27, 42, 51, 0.05);
+  box-shadow: 0 6px 16px rgba(54, 48, 39, 0.05);
 }
 
 .detail-card strong {
@@ -612,6 +824,11 @@ button {
 
   .stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .task-grid,
+  .mapping-rules > ol {
+    grid-template-columns: 1fr;
   }
 
   .matrix {
