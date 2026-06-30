@@ -211,11 +211,16 @@ h1 {
 }
 
 .task-grid section,
+.dataset-context,
 .mapping-rules {
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel-soft);
+}
+
+.dataset-context {
+  border-color: #c9bca9;
 }
 
 .mapping-rules > ol {

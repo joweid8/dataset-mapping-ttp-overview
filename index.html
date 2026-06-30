@@ -90,6 +90,24 @@
           </li>
         </ol>
       </section>
+
+      <section class="dataset-context" aria-labelledby="dataset-context-title">
+        <h3 id="dataset-context-title">The CIC-Modbus dataset: network-based</h3>
+        <p>The dataset was generated in a Docker-based smart-grid substation testbed modelling Modbus TCP communication between SCADA HMI systems and IEDs. The setup includes:</p>
+        <ul>
+          <li><strong>SCADA HMI containers</strong> controlling and monitoring IEDs through Modbus TCP.</li>
+          <li><strong>IED containers</strong> simulating substation devices, including voltage-changing logic and circuit-breaker behaviour.</li>
+          <li><strong>Trusted IED / trusted SCADA components</strong> running the proposed trust model to detect malicious Modbus activity.</li>
+          <li><strong>Regular / insecure IED and SCADA components</strong> used to model compromised internal devices.</li>
+          <li><strong>Rogue attacker device</strong> used to model attacks originating from outside the trusted substation devices.</li>
+          <li><strong>Central agent</strong> collecting device trust scores and computing the substation risk posture.</li>
+          <li><strong>ELK / SOC-style dashboard</strong> used to visualise trust levels, alerts, and risk-posture changes.</li>
+        </ul>
+        <p>The dataset contains packet captures consisting primarily of the following traffic:</p>
+        <ul>
+          <li><strong>Modbus TCP</strong> communication between SCADA HMI clients and IED servers</li>
+        </ul>
+      </section>
     </section>
 
     <section class="toolbar" aria-label="Matrix controls">
@@ -107,19 +125,19 @@
           <span>Initial Access</span>
           <strong>5</strong>
         </a>
-        <a class="technique-card" href="techniques/exploitation-of-remote-services.html">
+        <a class="technique-card" href="techniques/exploitation-of-remote-services.html" title="Exploitation of Remote Services">
           <span class="technique-name">Exploitation of Remote Services</span>
         </a>
-        <a class="technique-card" href="techniques/external-remote-services.html">
+        <a class="technique-card" href="techniques/external-remote-services.html" title="External Remote Services">
           <span class="technique-name">External Remote Services</span>
         </a>
-        <a class="technique-card" href="techniques/internet-accessible-device.html">
+        <a class="technique-card" href="techniques/internet-accessible-device.html" title="Internet Accessible Device">
           <span class="technique-name">Internet Accessible Device</span>
         </a>
-        <a class="technique-card" href="techniques/remote-services.html">
+        <a class="technique-card" href="techniques/remote-services.html" title="Remote Services">
           <span class="technique-name">Remote Services</span>
         </a>
-        <a class="technique-card" href="techniques/rogue-master.html">
+        <a class="technique-card" href="techniques/rogue-master.html" title="Rogue Master">
           <span class="technique-name">Rogue Master</span>
         </a>
       </section>
@@ -128,16 +146,16 @@
           <span>Execution</span>
           <strong>4</strong>
         </a>
-        <a class="technique-card" href="techniques/change-operating-mode.html">
+        <a class="technique-card" href="techniques/change-operating-mode.html" title="Change Operating Mode">
           <span class="technique-name">Change Operating Mode</span>
         </a>
-        <a class="technique-card" href="techniques/command-line-interface.html">
+        <a class="technique-card" href="techniques/command-line-interface.html" title="Command Line Interface">
           <span class="technique-name">Command Line Interface</span>
         </a>
-        <a class="technique-card" href="techniques/execution-through-api.html">
+        <a class="technique-card" href="techniques/execution-through-api.html" title="Execution through API">
           <span class="technique-name">Execution through API</span>
         </a>
-        <a class="technique-card" href="techniques/modify-controller-tasking.html">
+        <a class="technique-card" href="techniques/modify-controller-tasking.html" title="Modify Controller Tasking">
           <span class="technique-name">Modify Controller Tasking</span>
         </a>
       </section>
@@ -146,25 +164,25 @@
           <span>Persistence</span>
           <strong>7</strong>
         </a>
-        <a class="technique-card" href="techniques/insecure-credentials.html">
+        <a class="technique-card" href="techniques/insecure-credentials.html" title="Insecure Credentials">
           <span class="technique-name">Insecure Credentials</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/insecure-credentials-default-credentials.html">
+        <a class="technique-card subtechnique" href="techniques/insecure-credentials-default-credentials.html" title="Insecure Credentials: Default Credentials">
           <span class="technique-name">Insecure Credentials: Default Credentials</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/insecure-credentials-hardcoded-credentials.html">
+        <a class="technique-card subtechnique" href="techniques/insecure-credentials-hardcoded-credentials.html" title="Insecure Credentials: Hardcoded Credentials">
           <span class="technique-name">Insecure Credentials: Hardcoded Credentials</span>
         </a>
-        <a class="technique-card" href="techniques/modify-firmware.html">
+        <a class="technique-card" href="techniques/modify-firmware.html" title="Modify Firmware">
           <span class="technique-name">Modify Firmware</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/modify-firmware-module-firmware.html">
+        <a class="technique-card subtechnique" href="techniques/modify-firmware-module-firmware.html" title="Modify Firmware: Module Firmware">
           <span class="technique-name">Modify Firmware: Module Firmware</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/modify-firmware-system-firmware.html">
+        <a class="technique-card subtechnique" href="techniques/modify-firmware-system-firmware.html" title="Modify Firmware: System Firmware">
           <span class="technique-name">Modify Firmware: System Firmware</span>
         </a>
-        <a class="technique-card" href="techniques/modify-program.html">
+        <a class="technique-card" href="techniques/modify-program.html" title="Modify Program">
           <span class="technique-name">Modify Program</span>
         </a>
       </section>
@@ -173,16 +191,16 @@
           <span>Evasion</span>
           <strong>4</strong>
         </a>
-        <a class="technique-card" href="techniques/change-operating-mode.html">
+        <a class="technique-card" href="techniques/change-operating-mode.html" title="Change Operating Mode">
           <span class="technique-name">Change Operating Mode</span>
         </a>
-        <a class="technique-card" href="techniques/unauthorized-message.html">
+        <a class="technique-card" href="techniques/unauthorized-message.html" title="Unauthorized Message">
           <span class="technique-name">Unauthorized Message</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/unauthorized-message-command-message.html">
+        <a class="technique-card subtechnique" href="techniques/unauthorized-message-command-message.html" title="Unauthorized Message: Command Message">
           <span class="technique-name">Unauthorized Message: Command Message</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/unauthorized-message-reporting-message.html">
+        <a class="technique-card subtechnique" href="techniques/unauthorized-message-reporting-message.html" title="Unauthorized Message: Reporting Message">
           <span class="technique-name">Unauthorized Message: Reporting Message</span>
         </a>
       </section>
@@ -191,22 +209,22 @@
           <span>Discovery</span>
           <strong>6</strong>
         </a>
-        <a class="technique-card" href="techniques/network-connection-enumeration.html">
+        <a class="technique-card" href="techniques/network-connection-enumeration.html" title="Network Connection Enumeration">
           <span class="technique-name">Network Connection Enumeration</span>
         </a>
-        <a class="technique-card" href="techniques/remote-system-discovery.html">
+        <a class="technique-card" href="techniques/remote-system-discovery.html" title="Remote System Discovery">
           <span class="technique-name">Remote System Discovery</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/remote-system-discovery-broadcast-discovery.html">
+        <a class="technique-card subtechnique" href="techniques/remote-system-discovery-broadcast-discovery.html" title="Remote System Discovery: Broadcast Discovery">
           <span class="technique-name">Remote System Discovery: Broadcast Discovery</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/remote-system-discovery-multicast-discovery.html">
+        <a class="technique-card subtechnique" href="techniques/remote-system-discovery-multicast-discovery.html" title="Remote System Discovery: Multicast Discovery">
           <span class="technique-name">Remote System Discovery: Multicast Discovery</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/remote-system-discovery-port-scan.html">
+        <a class="technique-card subtechnique" href="techniques/remote-system-discovery-port-scan.html" title="Remote System Discovery: Port Scan">
           <span class="technique-name">Remote System Discovery: Port Scan</span>
         </a>
-        <a class="technique-card" href="techniques/remote-system-information-discovery.html">
+        <a class="technique-card" href="techniques/remote-system-information-discovery.html" title="Remote System Information Discovery">
           <span class="technique-name">Remote System Information Discovery</span>
         </a>
       </section>
@@ -215,34 +233,34 @@
           <span>Lateral Movement</span>
           <strong>10</strong>
         </a>
-        <a class="technique-card" href="techniques/exploitation-of-remote-services.html">
+        <a class="technique-card" href="techniques/exploitation-of-remote-services.html" title="Exploitation of Remote Services">
           <span class="technique-name">Exploitation of Remote Services</span>
         </a>
-        <a class="technique-card" href="techniques/insecure-credentials.html">
+        <a class="technique-card" href="techniques/insecure-credentials.html" title="Insecure Credentials">
           <span class="technique-name">Insecure Credentials</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/insecure-credentials-default-credentials.html">
+        <a class="technique-card subtechnique" href="techniques/insecure-credentials-default-credentials.html" title="Insecure Credentials: Default Credentials">
           <span class="technique-name">Insecure Credentials: Default Credentials</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/insecure-credentials-hardcoded-credentials.html">
+        <a class="technique-card subtechnique" href="techniques/insecure-credentials-hardcoded-credentials.html" title="Insecure Credentials: Hardcoded Credentials">
           <span class="technique-name">Insecure Credentials: Hardcoded Credentials</span>
         </a>
-        <a class="technique-card" href="techniques/lateral-tool-transfer.html">
+        <a class="technique-card" href="techniques/lateral-tool-transfer.html" title="Lateral Tool Transfer">
           <span class="technique-name">Lateral Tool Transfer</span>
         </a>
-        <a class="technique-card" href="techniques/program-download.html">
+        <a class="technique-card" href="techniques/program-download.html" title="Program Download">
           <span class="technique-name">Program Download</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/program-download-download-all.html">
+        <a class="technique-card subtechnique" href="techniques/program-download-download-all.html" title="Program Download: Download All">
           <span class="technique-name">Program Download: Download All</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/program-download-online-edit.html">
+        <a class="technique-card subtechnique" href="techniques/program-download-online-edit.html" title="Program Download: Online Edit">
           <span class="technique-name">Program Download: Online Edit</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/program-download-program-append.html">
+        <a class="technique-card subtechnique" href="techniques/program-download-program-append.html" title="Program Download: Program Append">
           <span class="technique-name">Program Download: Program Append</span>
         </a>
-        <a class="technique-card" href="techniques/remote-services.html">
+        <a class="technique-card" href="techniques/remote-services.html" title="Remote Services">
           <span class="technique-name">Remote Services</span>
         </a>
       </section>
@@ -251,22 +269,22 @@
           <span>Collection</span>
           <strong>6</strong>
         </a>
-        <a class="technique-card" href="techniques/adversary-in-the-middle.html">
+        <a class="technique-card" href="techniques/adversary-in-the-middle.html" title="Adversary-in-the-Middle">
           <span class="technique-name">Adversary-in-the-Middle</span>
         </a>
-        <a class="technique-card" href="techniques/automated-collection.html">
+        <a class="technique-card" href="techniques/automated-collection.html" title="Automated Collection">
           <span class="technique-name">Automated Collection</span>
         </a>
-        <a class="technique-card" href="techniques/detect-operating-mode.html">
+        <a class="technique-card" href="techniques/detect-operating-mode.html" title="Detect Operating Mode">
           <span class="technique-name">Detect Operating Mode</span>
         </a>
-        <a class="technique-card" href="techniques/monitor-process-state.html">
+        <a class="technique-card" href="techniques/monitor-process-state.html" title="Monitor Process State">
           <span class="technique-name">Monitor Process State</span>
         </a>
-        <a class="technique-card" href="techniques/point-and-tag-identification.html">
+        <a class="technique-card" href="techniques/point-and-tag-identification.html" title="Point &amp; Tag Identification">
           <span class="technique-name">Point &amp; Tag Identification</span>
         </a>
-        <a class="technique-card" href="techniques/program-upload.html">
+        <a class="technique-card" href="techniques/program-upload.html" title="Program Upload">
           <span class="technique-name">Program Upload</span>
         </a>
       </section>
@@ -275,13 +293,13 @@
           <span>Command and Control</span>
           <strong>3</strong>
         </a>
-        <a class="technique-card" href="techniques/commonly-used-port.html">
+        <a class="technique-card" href="techniques/commonly-used-port.html" title="Commonly Used Port">
           <span class="technique-name">Commonly Used Port</span>
         </a>
-        <a class="technique-card" href="techniques/connection-proxy.html">
+        <a class="technique-card" href="techniques/connection-proxy.html" title="Connection Proxy">
           <span class="technique-name">Connection Proxy</span>
         </a>
-        <a class="technique-card" href="techniques/standard-application-layer-protocol.html">
+        <a class="technique-card" href="techniques/standard-application-layer-protocol.html" title="Standard Application Layer Protocol">
           <span class="technique-name">Standard Application Layer Protocol</span>
         </a>
       </section>
@@ -290,55 +308,55 @@
           <span>Inhibit Response Function</span>
           <strong>17</strong>
         </a>
-        <a class="technique-card" href="techniques/activate-firmware-update-mode.html">
+        <a class="technique-card" href="techniques/activate-firmware-update-mode.html" title="Activate Firmware Update Mode">
           <span class="technique-name">Activate Firmware Update Mode</span>
         </a>
-        <a class="technique-card" href="techniques/alarm-suppression.html">
+        <a class="technique-card" href="techniques/alarm-suppression.html" title="Alarm Suppression">
           <span class="technique-name">Alarm Suppression</span>
         </a>
-        <a class="technique-card" href="techniques/block-communications.html">
+        <a class="technique-card" href="techniques/block-communications.html" title="Block Communications">
           <span class="technique-name">Block Communications</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/block-communications-ethernet.html">
+        <a class="technique-card subtechnique" href="techniques/block-communications-ethernet.html" title="Block Communications: Ethernet">
           <span class="technique-name">Block Communications: Ethernet</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/block-communications-serial-com.html">
+        <a class="technique-card subtechnique" href="techniques/block-communications-serial-com.html" title="Block Communications: Serial COM">
           <span class="technique-name">Block Communications: Serial COM</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/block-communications-wi-fi.html">
+        <a class="technique-card subtechnique" href="techniques/block-communications-wi-fi.html" title="Block Communications: Wi-Fi">
           <span class="technique-name">Block Communications: Wi-Fi</span>
         </a>
-        <a class="technique-card" href="techniques/block-operational-technology-message.html">
+        <a class="technique-card" href="techniques/block-operational-technology-message.html" title="Block Operational Technology Message">
           <span class="technique-name">Block Operational Technology Message</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/block-operational-technology-message-command-message.html">
+        <a class="technique-card subtechnique" href="techniques/block-operational-technology-message-command-message.html" title="Block Operational Technology Message: Command Message">
           <span class="technique-name">Block Operational Technology Message: Command Message</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/block-operational-technology-message-reporting-message.html">
+        <a class="technique-card subtechnique" href="techniques/block-operational-technology-message-reporting-message.html" title="Block Operational Technology Message: Reporting Message">
           <span class="technique-name">Block Operational Technology Message: Reporting Message</span>
         </a>
-        <a class="technique-card" href="techniques/denial-of-service.html">
+        <a class="technique-card" href="techniques/denial-of-service.html" title="Denial of Service">
           <span class="technique-name">Denial of Service</span>
         </a>
-        <a class="technique-card" href="techniques/device-restart-shutdown.html">
+        <a class="technique-card" href="techniques/device-restart-shutdown.html" title="Device Restart/Shutdown">
           <span class="technique-name">Device Restart/Shutdown</span>
         </a>
-        <a class="technique-card" href="techniques/manipulate-i-o-image.html">
+        <a class="technique-card" href="techniques/manipulate-i-o-image.html" title="Manipulate I/O Image">
           <span class="technique-name">Manipulate I/O Image</span>
         </a>
-        <a class="technique-card" href="techniques/modify-alarm-settings.html">
+        <a class="technique-card" href="techniques/modify-alarm-settings.html" title="Modify Alarm Settings">
           <span class="technique-name">Modify Alarm Settings</span>
         </a>
-        <a class="technique-card" href="techniques/modify-firmware.html">
+        <a class="technique-card" href="techniques/modify-firmware.html" title="Modify Firmware">
           <span class="technique-name">Modify Firmware</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/modify-firmware-module-firmware.html">
+        <a class="technique-card subtechnique" href="techniques/modify-firmware-module-firmware.html" title="Modify Firmware: Module Firmware">
           <span class="technique-name">Modify Firmware: Module Firmware</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/modify-firmware-system-firmware.html">
+        <a class="technique-card subtechnique" href="techniques/modify-firmware-system-firmware.html" title="Modify Firmware: System Firmware">
           <span class="technique-name">Modify Firmware: System Firmware</span>
         </a>
-        <a class="technique-card" href="techniques/service-stop.html">
+        <a class="technique-card" href="techniques/service-stop.html" title="Service Stop">
           <span class="technique-name">Service Stop</span>
         </a>
       </section>
@@ -347,28 +365,28 @@
           <span>Impair Process Control</span>
           <strong>8</strong>
         </a>
-        <a class="technique-card" href="techniques/brute-force-i-o.html">
+        <a class="technique-card" href="techniques/brute-force-i-o.html" title="Brute Force I/O">
           <span class="technique-name">Brute Force I/O</span>
         </a>
-        <a class="technique-card" href="techniques/modify-firmware.html">
+        <a class="technique-card" href="techniques/modify-firmware.html" title="Modify Firmware">
           <span class="technique-name">Modify Firmware</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/modify-firmware-module-firmware.html">
+        <a class="technique-card subtechnique" href="techniques/modify-firmware-module-firmware.html" title="Modify Firmware: Module Firmware">
           <span class="technique-name">Modify Firmware: Module Firmware</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/modify-firmware-system-firmware.html">
+        <a class="technique-card subtechnique" href="techniques/modify-firmware-system-firmware.html" title="Modify Firmware: System Firmware">
           <span class="technique-name">Modify Firmware: System Firmware</span>
         </a>
-        <a class="technique-card" href="techniques/modify-parameter.html">
+        <a class="technique-card" href="techniques/modify-parameter.html" title="Modify Parameter">
           <span class="technique-name">Modify Parameter</span>
         </a>
-        <a class="technique-card" href="techniques/unauthorized-message.html">
+        <a class="technique-card" href="techniques/unauthorized-message.html" title="Unauthorized Message">
           <span class="technique-name">Unauthorized Message</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/unauthorized-message-command-message.html">
+        <a class="technique-card subtechnique" href="techniques/unauthorized-message-command-message.html" title="Unauthorized Message: Command Message">
           <span class="technique-name">Unauthorized Message: Command Message</span>
         </a>
-        <a class="technique-card subtechnique" href="techniques/unauthorized-message-reporting-message.html">
+        <a class="technique-card subtechnique" href="techniques/unauthorized-message-reporting-message.html" title="Unauthorized Message: Reporting Message">
           <span class="technique-name">Unauthorized Message: Reporting Message</span>
         </a>
       </section>
@@ -377,34 +395,34 @@
           <span>Impact</span>
           <strong>10</strong>
         </a>
-        <a class="technique-card" href="techniques/damage-to-property.html">
+        <a class="technique-card" href="techniques/damage-to-property.html" title="Damage to Property">
           <span class="technique-name">Damage to Property</span>
         </a>
-        <a class="technique-card" href="techniques/denial-of-control.html">
+        <a class="technique-card" href="techniques/denial-of-control.html" title="Denial of Control">
           <span class="technique-name">Denial of Control</span>
         </a>
-        <a class="technique-card" href="techniques/denial-of-view.html">
+        <a class="technique-card" href="techniques/denial-of-view.html" title="Denial of View">
           <span class="technique-name">Denial of View</span>
         </a>
-        <a class="technique-card" href="techniques/loss-of-availability.html">
+        <a class="technique-card" href="techniques/loss-of-availability.html" title="Loss of Availability">
           <span class="technique-name">Loss of Availability</span>
         </a>
-        <a class="technique-card" href="techniques/loss-of-control.html">
+        <a class="technique-card" href="techniques/loss-of-control.html" title="Loss of Control">
           <span class="technique-name">Loss of Control</span>
         </a>
-        <a class="technique-card" href="techniques/loss-of-protection.html">
+        <a class="technique-card" href="techniques/loss-of-protection.html" title="Loss of Protection">
           <span class="technique-name">Loss of Protection</span>
         </a>
-        <a class="technique-card" href="techniques/loss-of-safety.html">
+        <a class="technique-card" href="techniques/loss-of-safety.html" title="Loss of Safety">
           <span class="technique-name">Loss of Safety</span>
         </a>
-        <a class="technique-card" href="techniques/loss-of-view.html">
+        <a class="technique-card" href="techniques/loss-of-view.html" title="Loss of View">
           <span class="technique-name">Loss of View</span>
         </a>
-        <a class="technique-card" href="techniques/manipulation-of-control.html">
+        <a class="technique-card" href="techniques/manipulation-of-control.html" title="Manipulation of Control">
           <span class="technique-name">Manipulation of Control</span>
         </a>
-        <a class="technique-card" href="techniques/manipulation-of-view.html">
+        <a class="technique-card" href="techniques/manipulation-of-view.html" title="Manipulation of View">
           <span class="technique-name">Manipulation of View</span>
         </a>
       </section>

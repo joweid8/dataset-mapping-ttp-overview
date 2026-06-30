@@ -136,7 +136,7 @@ def build_index(techniques: dict[str, dict], tactics: list[str], by_tactic: dict
             is_subtechnique = ":" in technique
             card_class = "technique-card subtechnique" if is_subtechnique else "technique-card"
             cards.append(
-                f"""        <a class="{card_class}" href="{technique_link(technique)}">
+                f"""        <a class="{card_class}" href="{technique_link(technique)}" title="{escape(technique)}">
           <span class="technique-name">{escape(technique)}</span>
         </a>"""
             )
@@ -220,6 +220,24 @@ def build_index(techniques: dict[str, dict], tactics: list[str], by_tactic: dict
             <p>Example: if the attacker turns on a motorized valve, "Modify Parameter" could likely have happened, but if it is not explicitly stated by the description, this would only be an inference without proof.</p>
           </li>
         </ol>
+      </section>
+
+      <section class="dataset-context" aria-labelledby="dataset-context-title">
+        <h3 id="dataset-context-title">The CIC-Modbus dataset: network-based</h3>
+        <p>The dataset was generated in a Docker-based smart-grid substation testbed modelling Modbus TCP communication between SCADA HMI systems and IEDs. The setup includes:</p>
+        <ul>
+          <li><strong>SCADA HMI containers</strong> controlling and monitoring IEDs through Modbus TCP.</li>
+          <li><strong>IED containers</strong> simulating substation devices, including voltage-changing logic and circuit-breaker behaviour.</li>
+          <li><strong>Trusted IED / trusted SCADA components</strong> running the proposed trust model to detect malicious Modbus activity.</li>
+          <li><strong>Regular / insecure IED and SCADA components</strong> used to model compromised internal devices.</li>
+          <li><strong>Rogue attacker device</strong> used to model attacks originating from outside the trusted substation devices.</li>
+          <li><strong>Central agent</strong> collecting device trust scores and computing the substation risk posture.</li>
+          <li><strong>ELK / SOC-style dashboard</strong> used to visualise trust levels, alerts, and risk-posture changes.</li>
+        </ul>
+        <p>The dataset contains packet captures consisting primarily of the following traffic:</p>
+        <ul>
+          <li><strong>Modbus TCP</strong> communication between SCADA HMI clients and IED servers</li>
+        </ul>
       </section>
     </section>
 
@@ -523,11 +541,16 @@ h1 {
 }
 
 .task-grid section,
+.dataset-context,
 .mapping-rules {
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel-soft);
+}
+
+.dataset-context {
+  border-color: #c9bca9;
 }
 
 .mapping-rules > ol {
